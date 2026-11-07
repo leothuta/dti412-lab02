@@ -1,0 +1,44 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}{{ course.code }} - Course Details{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'catalog:home' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'catalog:course_list' %}">Courses</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ course.code }}</li>
+            </ol>
+        </nav>
+
+        <div class="card shadow-sm border-0 p-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="badge bg-primary fs-5 px-3 py-2">{{ course.code }}</span>
+                    <span class="badge bg-secondary fs-6">{{ course.credits }} Credit Units</span>
+                </div>
+                
+                <h1 class="fw-bold text-dark mb-3">{{ course.title }}</h1>
+                
+                <p class="text-muted mb-4 fs-5">
+                    <strong>Lead Instructor:</strong> {{ course.instructor }}
+                </p>
+
+                <hr class="my-4">
+
+                <h4 class="fw-bold text-secondary mb-3">Course Overview & Syllabus</h4>
+                <p class="fs-6 lh-lg text-dark bg-light p-4 rounded border">
+                    {{ course.description }}
+                </p>
+
+                <div class="d-flex justify-content-between mt-5">
+                    <a href="{% url 'catalog:course_list' %}" class="btn btn-outline-secondary">&larr; Back to Catalog</a>
+                    <a href="{% url 'catalog:inquiry' %}" class="btn btn-primary">Inquire About Course</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
